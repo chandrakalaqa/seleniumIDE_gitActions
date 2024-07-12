@@ -29,20 +29,28 @@ jobs:
       with:
         node-version: '14'
 
-    - name: Install Selenium IDE runner and mochawesome
-      run: npm install -g selenium-side-runner mochawesome
+    - name: Install dependencies
+      run: npm install -g selenium-side-runner mocha mochawesome mochawesome-merge mochawesome-report-generator
 
-    - name: Run Selenium IDE tests
-      run: selenium-side-runner -s http://localhost:4444 --output-directory=./results --reporter mochawesome ./Test_CICD.side
+    - name: Convert Selenium IDE tests to Mocha
+      run: selenium-side-runner --output-directory=./mocha-tests ./Test_CICD.side
 
-    - name: Upload test results
+    - name: Run Mocha tests
+      run: mocha ./mocha-tests --reporter mochawesome --reporter-options reportDir=./results,reportFilename=mochawesome-report
+
+    - name: Merge and generate mochawesome report
+      run: |
+        npx mochawesome-merge ./results/*.json > ./results/mochawesome.json
+        npx mochawesome-report-generator ./results/mochawesome.json -o ./results
+
+    - name: Upload raw test results
       uses: actions/upload-artifact@v3
       with:
-        name: selenium-test-results
+        name: raw-test-results
         path: ./results
 
     - name: Upload detailed test report
       uses: actions/upload-artifact@v3
       with:
         name: detailed-test-report
-        path: ./results/mochawesome-report
+        path: ./results
