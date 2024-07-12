@@ -29,14 +29,20 @@ jobs:
       with:
         node-version: '14'
 
-    - name: Install Selenium IDE runner
-      run: npm install -g selenium-side-runner
+    - name: Install Selenium IDE runner and mochawesome
+      run: npm install -g selenium-side-runner mochawesome
 
     - name: Run Selenium IDE tests
-      run: selenium-side-runner -s http://localhost:4444 --output-directory=./results ./Test_CICD.side
+      run: selenium-side-runner -s http://localhost:4444 --output-directory=./results --reporter mochawesome ./Test_CICD.side
 
     - name: Upload test results
       uses: actions/upload-artifact@v3
       with:
         name: selenium-test-results
         path: ./results
+
+    - name: Upload detailed test report
+      uses: actions/upload-artifact@v3
+      with:
+        name: detailed-test-report
+        path: ./results/mochawesome-report
