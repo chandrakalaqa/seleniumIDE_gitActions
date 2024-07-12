@@ -19,6 +19,7 @@ jobs:
           - 4444:4444
         options:
           --shm-size 2g
+          --env SE_OPTS="--headless --no-sandbox --disable-dev-shm-usage"
 
     steps:
     - name: Checkout repository
@@ -36,7 +37,7 @@ jobs:
       run: selenium-side-runner --output-directory=./mocha-tests ./Test_CICD.side
 
     - name: Run Mocha tests
-      run: mocha ./mocha-tests --reporter mochawesome --reporter-options reportDir=./results,reportFilename=mochawesome-report
+      run: mocha ./mocha-tests --reporter mochawesome --reporter-options reportDir=./results,reportFilename=mochawesome-report --timeout 60000
 
     - name: Merge and generate mochawesome report
       run: |
