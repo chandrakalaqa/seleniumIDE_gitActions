@@ -33,7 +33,7 @@ jobs:
       run: npm install -g selenium-side-runner
 
     - name: Run Selenium IDE tests
-      run: selenium-side-runner -s http://localhost:4444 --output-directory=./results ./path-to-your-side-files
+      run: selenium-side-runner -s http://localhost:4444 --output-directory=./results ./Test_CICD.side
 
     - name: Upload test results
       uses: actions/upload-artifact@v3
