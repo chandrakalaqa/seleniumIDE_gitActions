@@ -19,7 +19,6 @@ jobs:
           - 4444:4444
         options:
           --shm-size 2g
-          --env SE_OPTS="--headless --no-sandbox --disable-dev-shm-usage"
 
     steps:
     - name: Checkout repository
@@ -30,28 +29,14 @@ jobs:
       with:
         node-version: '14'
 
-    - name: Install dependencies
-      run: npm install -g selenium-side-runner mocha mochawesome mochawesome-merge mochawesome-report-generator
+    - name: Install Selenium IDE runner
+      run: npm install -g selenium-side-runner
 
-    - name: Convert Selenium IDE tests to Mocha
-      run: selenium-side-runner --output-directory=./mocha-tests ./Test_CICD.side
+    - name: Run Selenium IDE tests
+      run: selenium-side-runner -s http://localhost:4444 --output-directory=./results ./Test_CICD.side
 
-    - name: Run Mocha tests
-      run: mocha ./mocha-tests --reporter mochawesome --reporter-options reportDir=./results,reportFilename=mochawesome-report --timeout 60000
-
-    - name: Merge and generate mochawesome report
-      run: |
-        npx mochawesome-merge ./results/*.json > ./results/mochawesome.json
-        npx mochawesome-report-generator ./results/mochawesome.json -o ./results
-
-    - name: Upload raw test results
+    - name: Upload test results
       uses: actions/upload-artifact@v3
       with:
-        name: raw-test-results
-        path: ./results
-
-    - name: Upload detailed test report
-      uses: actions/upload-artifact@v3
-      with:
-        name: detailed-test-report
+        name: selenium-test-results
         path: ./results
