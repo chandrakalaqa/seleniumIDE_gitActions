@@ -42,6 +42,46 @@
       "targets": [],
       "value": ""
     }]
+  }, {
+    "id": "9f4f3361-c289-4a08-9172-c57d0ae25e3e",
+    "name": "test 2",
+    "commands": [{
+      "id": "6ebc69a9-8043-4023-add9-5bcf1d679f21",
+      "comment": "",
+      "command": "open",
+      "target": "https://pal.tech/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aed922ae-3e03-49f4-ad69-5fe43b17d11a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1099x621",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4e29e8dc-3098-4e4d-99fb-5c63fcb36fc3",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=What We Do",
+      "targets": [
+        ["linkText=What We Do", "linkText"],
+        ["css=#menu-item-75 > a", "css:finder"],
+        ["xpath=//a[contains(text(),'What We Do')]", "xpath:link"],
+        ["xpath=//li[@id='menu-item-75']/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '#')]", "xpath:href"],
+        ["xpath=//li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'What We Do')]", "xpath:innerText"]
+      ],
+      "value": "What We Do"
+    }, {
+      "id": "a6d41523-474a-476f-8fca-f143a0bf02c7",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
   }],
   "suites": [{
     "id": "e01460f6-6f9c-4f70-b0f5-30cf6cde70c8",
@@ -50,6 +90,13 @@
     "parallel": false,
     "timeout": 300,
     "tests": ["56466409-7271-4c8a-8b30-d64c2e1beb7c"]
+  }, {
+    "id": "4c6a5990-954c-4c7d-856a-4a3f1b27fa6a",
+    "name": "Test 2",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["9f4f3361-c289-4a08-9172-c57d0ae25e3e", "56466409-7271-4c8a-8b30-d64c2e1beb7c"]
   }],
   "urls": ["https://pal.tech/"],
   "plugins": []
