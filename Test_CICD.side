@@ -34,16 +34,23 @@
         ["xpath=//rs-layer[contains(.,'Efficient Wellness Tracking App')]", "xpath:innerText"]
       ],
       "value": ""
+    }, {
+      "id": "89e3c357-86d0-4d2e-b9ee-e8af9fd213ad",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
     }]
   }],
   "suites": [{
     "id": "e01460f6-6f9c-4f70-b0f5-30cf6cde70c8",
-    "name": "Default Suite",
+    "name": "Test",
     "persistSession": false,
     "parallel": false,
     "timeout": 300,
-    "tests": []
+    "tests": ["56466409-7271-4c8a-8b30-d64c2e1beb7c"]
   }],
-  "urls": [],
+  "urls": ["https://pal.tech/"],
   "plugins": []
 }
