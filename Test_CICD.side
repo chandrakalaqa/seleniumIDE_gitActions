@@ -1,0 +1,49 @@
+{
+  "id": "cb19cdb4-1913-4829-b1ed-98c847ea9e8a",
+  "version": "2.0",
+  "name": "Test_CICD",
+  "url": "https://pal.tech/",
+  "tests": [{
+    "id": "56466409-7271-4c8a-8b30-d64c2e1beb7c",
+    "name": "test",
+    "commands": [{
+      "id": "49725a45-114b-4d9d-a14d-728c4d8cf56f",
+      "comment": "",
+      "command": "open",
+      "target": "https://pal.tech/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f026141d-c1a2-4bc2-af8d-2763cb2160c4",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1099x621",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "509bbd2f-0379-47a7-8ddf-d72f07a9750c",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "id=slider-1-slide-1-layer-0",
+      "targets": [
+        ["id=slider-1-slide-1-layer-0", "id"],
+        ["css=#slider-1-slide-1-layer-0", "css:finder"],
+        ["xpath=//rs-layer[@id='slider-1-slide-1-layer-0']", "xpath:attributes"],
+        ["xpath=//rs-module[@id='rev_slider_1_1']/rs-slides/rs-slide/rs-layer-wrap/rs-layer", "xpath:idRelative"],
+        ["xpath=//rs-layer", "xpath:position"],
+        ["xpath=//rs-layer[contains(.,'Efficient Wellness Tracking App')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "e01460f6-6f9c-4f70-b0f5-30cf6cde70c8",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": [],
+  "plugins": []
+}
